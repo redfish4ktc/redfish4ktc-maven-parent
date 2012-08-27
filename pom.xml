@@ -136,6 +136,11 @@
           <artifactId>apache-rat-plugin</artifactId>
           <version>0.8</version>        
         </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>animal-sniffer-maven-plugin</artifactId>
+          <version>1.8</version>
+        </plugin>
       </plugins>
     </pluginManagement>
 
