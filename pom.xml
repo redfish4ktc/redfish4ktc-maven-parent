@@ -172,10 +172,32 @@
           <artifactId>animal-sniffer-maven-plugin</artifactId>
           <version>1.8</version>
         </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>buildnumber-maven-plugin</artifactId>
+          <version>1.1</version>
+        </plugin>
       </plugins>
     </pluginManagement>
 
     <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <configuration>
+          <archive>
+            <manifest>
+              <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+            </manifest>
+            <manifestEntries>
+              <Project-build-date>${buildnumber-date}</Project-build-date>
+              <Project-build-scm-branch>${buildnumber-scm-branch}</Project-build-scm-branch>
+              <Project-build-scm-changeset>${buildnumber-scm-changeset}</Project-build-scm-changeset>
+              <Project-url>${project.url}</Project-url>
+            </manifestEntries>
+          </archive>
+        </configuration>
+      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-release-plugin</artifactId>
@@ -191,6 +213,29 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <configuration>
           <redirectTestOutputToFile>true</redirectTestOutputToFile>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>buildnumber-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>generate-buildnumber-scm</id>
+            <phase>initialize</phase>
+            <goals>
+              <goal>create</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <doCheck>false</doCheck>
+          <doUpdate>false</doUpdate>
+          <getRevisionOnlyOnce>true</getRevisionOnlyOnce>
+          <scmBranchPropertyName>buildnumber-scm-branch</scmBranchPropertyName>
+          <buildNumberPropertyName>buildnumber-scm-changeset</buildNumberPropertyName>
+          <timestampPropertyName>buildnumber-date</timestampPropertyName>
+          <timestampFormat>{0,date,yyyy-MM-dd HH:mm:ss.SSS Z}</timestampFormat>
+          <locale>fr_FR</locale>
         </configuration>
       </plugin>
     </plugins>
