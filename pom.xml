@@ -205,8 +205,8 @@
             <configuration>
               <rules>
                 <requireMavenVersion>
-                  <version>(,2.1.0),(2.1.0,2.2.0),(2.2.0,)</version>
-                  <message>Maven 2.1.0 and 2.2.0 produce incorrect GPG signatures and checksums respectively.</message>
+                  <version>(2.2.1,)</version>
+                  <message>Only support Maven 2.2.1+. It's time to upgrade!!!</message>
                 </requireMavenVersion>
               </rules>
             </configuration>
