@@ -11,6 +11,7 @@
 - dependency: 2.6
 - source 2.2.1
 - invoker 1.8
+- buildnumber 1.2
 
 **add plugins**
 
