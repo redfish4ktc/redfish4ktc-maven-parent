@@ -9,5 +9,3 @@
 - maven-compiler-plugin to 3.0: check if it is ok with maven 2.2.1
 
 **add plugins**
-
-- site 3.2
