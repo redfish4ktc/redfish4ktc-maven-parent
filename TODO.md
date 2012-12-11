@@ -11,6 +11,5 @@
 **add plugins**
 
 - war (2.3)
-- tomcat7 plugin (mockaswar)
 - failsafe: 2.12.4 (create property to share version with surefire)
 - site 3.2
