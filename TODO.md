@@ -8,7 +8,6 @@
 
 - maven-compiler-plugin to 3.0: check if it is ok with maven 2.2.1
 - source 2.2.1
-- invoker 1.8
 
 **add plugins**
 
