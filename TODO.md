@@ -4,10 +4,9 @@
      - configuration of enforcer must be different when performing release (use the release profile to check this)
      - doc (build will failed if maven 3.0.4+ is not used)
 
-**upgrade**
+**upgrade plugins**
 
 - maven-compiler-plugin to 3.0: check if it is ok with maven 2.2.1
-- source 2.2.1
 
 **add plugins**
 
