@@ -7,6 +7,5 @@
 **upgrade plugins**
 
 - maven-compiler-plugin to 3.0: check if it is ok with maven 2.2.1
-- maven-release-plugin 2.4
 
 **add plugins**
