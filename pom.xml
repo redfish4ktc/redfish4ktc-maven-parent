@@ -69,6 +69,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven_minimum_required_version>2.2.1</maven_minimum_required_version>
 
     <!-- plugin versions -->
     <plugin_failsafe_version>2.16</plugin_failsafe_version>
@@ -272,8 +273,7 @@
             <configuration>
               <rules>
                 <requireMavenVersion>
-                  <version>[2.2.1,)</version>
-                  <message>Only support Maven 2.2.1+. It's time to upgrade!!!</message>
+                  <version>[${maven_minimum_required_version},)</version>
                 </requireMavenVersion>
               </rules>
             </configuration>
@@ -310,6 +310,9 @@
   <profiles>
     <profile>
       <id>sonatype-oss-release</id>
+      <properties>
+        <maven_minimum_required_version>3.0.5</maven_minimum_required_version>
+      </properties>
       <build>
         <plugins>
           <plugin>
