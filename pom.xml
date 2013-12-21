@@ -262,6 +262,11 @@
           <artifactId>buildnumber-maven-plugin</artifactId>
           <version>1.2</version>
         </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>templating-maven-plugin</artifactId>
+          <version>1.0-alpha-3</version>
+        </plugin>
       </plugins>
     </pluginManagement>
 
