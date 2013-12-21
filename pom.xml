@@ -78,6 +78,10 @@
     <plugin_tomcat_version>2.2</plugin_tomcat_version>
 
     <!-- plugin configuration-->
+    <plugin_animal_sniffer_skip>false</plugin_animal_sniffer_skip>
+    <plugin_animal_sniffer_signature_groupId>org.codehaus.mojo.signature</plugin_animal_sniffer_signature_groupId>
+    <plugin_animal_sniffer_signature_artifactId>java16</plugin_animal_sniffer_signature_artifactId>
+    <plugin_animal_sniffer_signature_version>1.1</plugin_animal_sniffer_signature_version>
     <plugin_surefire_failsafe_redirectTestOutputToFile>true</plugin_surefire_failsafe_redirectTestOutputToFile>
   </properties>
 
@@ -312,6 +316,27 @@
           <timestampFormat>{0,date,yyyy-MM-dd HH:mm:ss.SSS Z}</timestampFormat>
           <locale>fr_FR</locale>
         </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>animal-sniffer-maven-plugin</artifactId>
+        <configuration>
+          <signature>
+            <groupId>${plugin_animal_sniffer_signature_groupId}</groupId>
+            <artifactId>${plugin_animal_sniffer_signature_artifactId}</artifactId>
+            <version>${plugin_animal_sniffer_signature_version}</version>
+          </signature>
+          <skip>${plugin_animal_sniffer_skip}</skip>
+        </configuration>
+        <executions>
+          <execution>
+            <id>animal-sniffer-check</id>
+            <phase>process-classes</phase>
+            <goals>
+              <goal>check</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
 
