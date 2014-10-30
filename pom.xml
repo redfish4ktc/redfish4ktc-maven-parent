@@ -82,6 +82,7 @@
     <plugin_animal_sniffer_signature_groupId>org.codehaus.mojo.signature</plugin_animal_sniffer_signature_groupId>
     <plugin_animal_sniffer_signature_artifactId>java16</plugin_animal_sniffer_signature_artifactId>
     <plugin_animal_sniffer_signature_version>1.1</plugin_animal_sniffer_signature_version>
+    <plugin_enforcer_fail_on_wrong_bytecode_version>true</plugin_enforcer_fail_on_wrong_bytecode_version>
     <plugin_surefire_failsafe_redirectTestOutputToFile>true</plugin_surefire_failsafe_redirectTestOutputToFile>
   </properties>
 
@@ -348,7 +349,42 @@
               </rules>
             </configuration>
           </execution>
+          <execution>
+            <id>enforce-java</id>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+            <configuration>
+              <rules>
+                <requireJavaVersion>
+                  <version>[${java_minimum_supported_version},)</version>
+                </requireJavaVersion>
+              </rules>
+            </configuration>
+          </execution>
+          <execution>
+            <id>enforce-bytecode-version</id>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+            <configuration>
+              <rules>
+                <!-- http://mojo.codehaus.org/extra-enforcer-rules/enforceBytecodeVersion.html -->
+                <enforceBytecodeVersion>
+                  <maxJdkVersion>${java_minimum_supported_version}</maxJdkVersion>
+                </enforceBytecodeVersion>
+              </rules>
+              <fail>${plugin_enforcer_fail_on_wrong_bytecode_version}</fail>
+            </configuration>
+          </execution>
         </executions>
+        <dependencies>
+          <dependency>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>extra-enforcer-rules</artifactId>
+            <version>1.0-beta-3</version>
+          </dependency>
+        </dependencies>
       </plugin>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
